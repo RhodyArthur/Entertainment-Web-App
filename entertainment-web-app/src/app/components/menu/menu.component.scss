@@ -31,16 +31,24 @@
     .avatar {
         width: pxToRem(24);
         height: pxToRem(24);
+        cursor: pointer;
     }
 }
 
 //media queries
+@include breakpoints.mq(tablet) {
+    .menu-container {
+        border-radius: 10px;
+    }
+}
+
 @include breakpoints.mq(desktop) {
     .menu-container {
         display: flex;
         flex-direction: column;
         width: pxToRem(96);
         height: calc(100vh - 4rem);
+        border-radius: 20px;
 
         .nav-container {
             flex-direction: inherit;

@@ -1,3 +1,5 @@
+@import '../styles/variables';
+
 *,
 ::before,
 ::after {
@@ -8,6 +10,7 @@
 
 body {
   font-family: "Outfit", sans-serif;
+  background-color: $dark-blue;
 }
 
 img {
