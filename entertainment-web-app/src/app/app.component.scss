@@ -1,0 +1,17 @@
+@use '../styles/breakpoints';
+
+.app-container {
+    overflow: hidden;
+}
+
+@include breakpoints.mq(tablet) {
+    .app-container {
+        padding: 1.5rem;
+    }
+}
+
+@include breakpoints.mq(desktop) {
+    .app-container {
+        padding: 2rem;
+    }
+}

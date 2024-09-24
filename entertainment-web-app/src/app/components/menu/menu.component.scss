@@ -1,0 +1,53 @@
+@use '../../../styles/breakpoints';
+@import '../../../styles/mixins';
+@import '../../../styles/typography';
+@import '../../../styles/variables';
+
+.menu-container {
+    @include flex-row(flex, space-between, center);
+    padding: 1rem;
+    height: pxToRem(56);
+    background-color: $semi-dark-blue;
+
+    .nav-container {
+        @include flex-row(flex, space-between, center);
+        gap: 1.5rem;
+
+        svg {
+            fill: $greyish-blue;
+            cursor: pointer;
+
+            &:active {
+                    fill: $white;
+            }
+
+            &:hover {
+                fill: $red;
+            }
+        }
+
+    }
+
+    .avatar {
+        width: pxToRem(24);
+        height: pxToRem(24);
+    }
+}
+
+//media queries
+@include breakpoints.mq(desktop) {
+    .menu-container {
+        display: flex;
+        flex-direction: column;
+        width: pxToRem(96);
+        height: calc(100vh - 4rem);
+
+        .nav-container {
+            flex-direction: inherit;
+            justify-content: start;
+            flex: 1;
+            margin-top: 2rem;
+
+        }
+    }
+}
