@@ -16,7 +16,7 @@ export const moviesReducer = createReducer(
 
     // handle actions
     on(loadMovies, (state) => ({...state})),
-    on(loadMoviesSuccess, (state, {movies}) => ({...state, movies}) ),
+    on(loadMoviesSuccess, (state, {movies}) => ({...state, movies: movies}) ),
     on(loadMoviesFailure, (state, {error}) => ({...state, error}))
 )
 
