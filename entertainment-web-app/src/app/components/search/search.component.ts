@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
-import {Observable} from "rxjs";
-import {Movies} from "../../interface/movies";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../store/appstate";
-import {selectAllMovies} from "../../store/movies.selectors";
+import {Component, OnInit} from '@angular/core';
 import {AsyncPipe, NgIf} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -16,11 +12,31 @@ import {AsyncPipe, NgIf} from "@angular/common";
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
-export class SearchComponent {
-    movies$!: Observable<Movies[]>;
+export class SearchComponent implements OnInit{
+    category!: string | null;
 
-    constructor(private store: Store<AppState>) {
-       this.movies$ =  store.select(selectAllMovies)
+    constructor(private route: ActivatedRoute) {}
+
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+            this.category = params['category'] || null
+        })
+    }
+
+//     define placeholders
+    getPlaceholders() {
+        if (this.category === 'movie') {
+            return 'Search for movies'
+        }
+        else if (this.category === 'tv series') {
+            return 'Search for TV series'
+        }
+        else if(this.category === 'bookmark') {
+            return 'Search for bookmarked shows'
+        }
+        else {
+            return 'Search for movies or TV series'
+        }
     }
 
 }

@@ -1,8 +1,13 @@
-<div class="d" *ngIf="movies$ | async as movies">
+<div class="main-container" *ngIf="movies$ | async as movies">
+    <app-menu/>
 
-    @for (movie of movies; track $index) {
-        <p>{{movie.title}}
-        </p>
-    }
+    <div class="content">
+        <app-search/>
+
+        @for (movie of movies; track $index) {
+            <p>{{movie.title}}
+            </p>
+        }
+        </div>
 
 </div>

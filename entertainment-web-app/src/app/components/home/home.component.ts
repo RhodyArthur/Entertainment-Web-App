@@ -6,13 +6,17 @@ import {Store} from "@ngrx/store";
 import {selectFilteredMovies} from "../../store/movies.selectors";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
+import {SearchComponent} from "../search/search.component";
+import {MenuComponent} from "../menu/menu.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
     imports: [
         NgIf,
-        AsyncPipe
+        AsyncPipe,
+        SearchComponent,
+        MenuComponent
     ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
