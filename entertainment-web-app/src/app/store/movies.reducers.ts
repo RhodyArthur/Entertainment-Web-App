@@ -6,7 +6,8 @@ import {loadMovies, loadMoviesFailure, loadMoviesSuccess} from "./movies.actions
 // set initial state
 export const initialState: AppState = {
     movies: [],
-    error: null
+    error: null,
+    searchItem: ''
 }
 
 // create reducer functions

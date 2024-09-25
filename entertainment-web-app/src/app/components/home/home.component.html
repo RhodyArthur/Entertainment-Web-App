@@ -1,1 +1,8 @@
-<p>home works!</p>
+<div class="d" *ngIf="movies$ | async as movies">
+
+    @for (movie of movies; track $index) {
+        <p>{{movie.title}}
+        </p>
+    }
+
+</div>
