@@ -11,10 +11,16 @@
     input {
         @extend .heading-m;
         background-color: transparent;
+        color: $white;
         width: 100%;
         border: none;
         outline: none;
         caret-color: $red;
         cursor: pointer;
+
+        &:active,
+        &:focus-within {
+            border-bottom: 1px solid $greyish-blue;
+        }
     }
 }
