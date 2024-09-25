@@ -1,3 +1,15 @@
 // create actions
+import {createAction, props} from "@ngrx/store";
+import {Movies} from "../interface/movies";
 
-// export const
+// load movies
+export const loadMovies = createAction('[Movies] Load Movies');
+
+// load movies success
+export const loadMoviesSuccess = createAction('[Movies] Load Movies Success',
+    props<{movies: Movies[]}>())
+
+
+//load movies failure
+export  const loadMoviesFailure = createAction('[Movies] Load Movies Failure',
+    props<{error: string}>())
