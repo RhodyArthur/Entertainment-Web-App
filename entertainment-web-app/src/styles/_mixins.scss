@@ -1,5 +1,23 @@
+@import '../styles/variables';
+
 @mixin flex-row($display, $position, $align) {
     display: $display;
     justify-content: $position;
     align-items: $align;
+}
+
+@mixin flex-column($gap) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin  btn-styles {
+    border-radius: 6px;
+    background-color: $red;
+    color: $white;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
