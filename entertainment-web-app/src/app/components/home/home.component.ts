@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit{
 
             // get trends
             this.getTrends();
-            console.log(this.trends)
         })
     }
 
@@ -46,7 +45,7 @@ export class HomeComponent implements OnInit{
     getTrends() {
         this.movies$.subscribe(movies => {
             movies.forEach(movie => {
-                if (movie.isTrending === true) {
+                if (movie.isTrending) {
                     this.trends.push(movie)
                 }
             })

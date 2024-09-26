@@ -35,6 +35,10 @@
         width: pxToRem(24);
         height: pxToRem(24);
         cursor: pointer;
+
+        img {
+            max-width: 100%;
+        }
     }
 }
 
