@@ -8,6 +8,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {SearchComponent} from "../search/search.component";
 import {MenuComponent} from "../menu/menu.component";
+import {TrendsComponent} from "./trends/trends.component";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ import {MenuComponent} from "../menu/menu.component";
         NgIf,
         AsyncPipe,
         SearchComponent,
-        MenuComponent
+        MenuComponent,
+        TrendsComponent
     ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

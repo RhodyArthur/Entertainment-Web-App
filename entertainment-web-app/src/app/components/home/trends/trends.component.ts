@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Movies} from "../../../interface/movies";
 
 @Component({
   selector: 'app-trends',
@@ -9,4 +10,5 @@ import { Component } from '@angular/core';
 })
 export class TrendsComponent {
 
+    @Input() trends!: Movies[];
 }
