@@ -54,4 +54,20 @@ export class HomeComponent implements OnInit{
         })
     }
 
+//     get page name
+    getName() {
+        if (this.category === 'movie') {
+            return 'Movies'
+        }
+        else if (this.category === 'tv series') {
+            return 'TV Series'
+        }
+        else if(this.category === 'bookmark') {
+            return 'Bookmarked Movies'
+        }
+        else {
+            return 'Recommended for you'
+        }
+    }
+
 }

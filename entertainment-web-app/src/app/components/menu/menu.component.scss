@@ -14,14 +14,16 @@
         gap: 1.5rem;
 
         a {
+
+            &.active-link {
+                svg {
+                    fill: $white;
+                }
+            }
             svg {
                 fill: $greyish-blue;
                 cursor: pointer;
 
-                &:active,
-                &:focus {
-                        fill: $white;
-                }
 
                 &:hover {
                     fill: $red;
