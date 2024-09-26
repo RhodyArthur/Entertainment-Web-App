@@ -13,3 +13,7 @@ export const loadMoviesSuccess = createAction('[Movies] Load Movies Success',
 //load movies failure
 export  const loadMoviesFailure = createAction('[Movies] Load Movies Failure',
     props<{error: string}>())
+
+// search movie
+export const setSearchMovie = createAction('[Movie] Set Search Movie',
+    props<{searchItem: string}>())

@@ -1,7 +1,7 @@
 // define shape of state
 import {AppState} from "./appstate";
 import {createReducer, on} from "@ngrx/store";
-import {loadMovies, loadMoviesFailure, loadMoviesSuccess} from "./movies.actions";
+import {loadMovies, loadMoviesFailure, loadMoviesSuccess, setSearchMovie} from "./movies.actions";
 
 // set initial state
 export const initialState: AppState = {
@@ -18,6 +18,8 @@ export const moviesReducer = createReducer(
     // handle actions
     on(loadMovies, (state) => ({...state})),
     on(loadMoviesSuccess, (state, {movies}) => ({...state, movies: movies}) ),
-    on(loadMoviesFailure, (state, {error}) => ({...state, error}))
+    on(loadMoviesFailure, (state, {error}) => ({...state, error})),
+
+    on(setSearchMovie, (state, {searchItem}) => ({...state, searchItem}))
 )
 

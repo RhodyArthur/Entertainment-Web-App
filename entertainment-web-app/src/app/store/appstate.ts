@@ -4,5 +4,4 @@ export interface AppState {
     movies: Movies[],
     error: string | null,
     searchItem: string
-
 }
