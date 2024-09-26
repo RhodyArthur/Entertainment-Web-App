@@ -13,16 +13,19 @@
         @include flex-row(flex, space-between, center);
         gap: 1.5rem;
 
-        svg {
-            fill: $greyish-blue;
-            cursor: pointer;
+        a {
+            svg {
+                fill: $greyish-blue;
+                cursor: pointer;
 
-            &:active {
-                    fill: $white;
-            }
+                &:active,
+                &:focus {
+                        fill: $white;
+                }
 
-            &:hover {
-                fill: $red;
+                &:hover {
+                    fill: $red;
+                }
             }
         }
 

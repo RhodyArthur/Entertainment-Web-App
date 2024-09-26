@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Movies} from "../../interface/movies";
 import {AppState} from "../../store/appstate";
@@ -21,9 +21,10 @@ import {MenuComponent} from "../menu/menu.component";
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
     movies$!: Observable<Movies[]>;
     category!: string | null;
+    trends: Movies[] = [];
 
     constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
 
@@ -31,9 +32,25 @@ export class HomeComponent {
         this.route.params.subscribe(params => {
             this.category = params['category'] || null
             this.movies$ = this.store.select(selectFilteredMovies(this.category))
+
+            // clear trends
+            this.trends = [];
+
+            // get trends
+            this.getTrends();
+            console.log(this.trends)
         })
     }
 
-
+    // get trends across categories
+    getTrends() {
+        this.movies$.subscribe(movies => {
+            movies.forEach(movie => {
+                if (movie.isTrending === true) {
+                    this.trends.push(movie)
+                }
+            })
+        })
+    }
 
 }
