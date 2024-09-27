@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit{
 
             const {email, password} = this.registerForm.value;
             const user = {
-                username: email,
+                email: email,
                 password: password
             }
             this.authService.register(user)

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {userData} from "../interface/userData";
-import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,6 @@ export class AuthService {
     }
 
     private setSession(authResult: any) {
-        console.log('Auth result:', authResult);
         if (authResult && authResult.token) {
             localStorage.setItem('token', authResult.token);
             localStorage.setItem('name', authResult.email || '');
@@ -59,7 +58,6 @@ export class AuthService {
         return this.http.post(this.loginURL, user)
             .pipe(
                 tap((response: any) => {
-                    console.log('Login response:', response);
                     this.setSession(response);
                 }),
                 catchError((error) => {
@@ -71,7 +69,7 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('token');
-        localStorage.removeItem('username');
+        localStorage.removeItem('email');
         this.authStatus.next(false);
     }
 
