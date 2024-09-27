@@ -23,14 +23,6 @@ export class LoginComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(8)]]
         })
-
-        this.route.queryParams.subscribe((params) => {
-            if (params['register'] === 'true') {
-                this.successMessage = 'Registration successful! Please log in.';
-            } else {
-                this.router.navigate(['/']);
-            }
-        });
     }
 
     onSubmit() {
@@ -38,12 +30,12 @@ export class LoginComponent implements OnInit {
             const {email, password} = this.loginForm.value;
 
             const loginData = {
-                email: email,
+                username: email,
                 password: password
             }
             this.authService.login(loginData).subscribe(
                 () => {
-                    this.router.navigate(['/'])
+                    this.router.navigate([''])
                 },
                 (error) => {
                     console.error('Login Failed')

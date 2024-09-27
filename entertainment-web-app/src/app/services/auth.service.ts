@@ -30,7 +30,7 @@ export class AuthService {
         console.log('Auth result:', authResult);
         if (authResult && authResult.token) {
             localStorage.setItem('token', authResult.token);
-            localStorage.setItem('email', authResult.email || '');
+            localStorage.setItem('name', authResult.email || '');
             this.authStatus.next(true);
         } else {
             console.error('Invalid auth result:', authResult);
@@ -71,7 +71,7 @@ export class AuthService {
 
     logout() {
         localStorage.removeItem('token');
-        localStorage.removeItem('email');
+        localStorage.removeItem('username');
         this.authStatus.next(false);
     }
 

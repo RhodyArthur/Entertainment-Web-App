@@ -6,13 +6,15 @@ import {provideState, provideStore} from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import {moviesReducer} from "./store/movies.reducers";
-import {provideHttpClient, withFetch} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi} from "@angular/common/http";
 import {MoviesEffects} from "./store/movies.effects";
+import {authInterceptor} from "./interceptor/auth.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
       provideRouter(routes),
-      provideHttpClient(withFetch()),
+      provideHttpClient(withFetch(), withInterceptorsFromDi()),
+      {provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true},
       provideStore(),
       provideState({name: 'movies', reducer: moviesReducer}),
       provideEffects(MoviesEffects),
