@@ -1,12 +1,57 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {ActivatedRoute, Router, RouterLink, RouterLinkActive} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+    imports: [ReactiveFormsModule, RouterLink, RouterLinkActive],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
+    loginForm!: FormGroup;
+    successMessage: string = '';
+
+    constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,
+                private route: ActivatedRoute) {}
+
+    ngOnInit() {
+        this.loginForm = this.fb.group({
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(8)]]
+        })
+
+        this.route.queryParams.subscribe((params) => {
+            if (params['register'] === 'true') {
+                this.successMessage = 'Registration successful! Please log in.';
+            } else {
+                this.router.navigate(['/']);
+            }
+        });
+    }
+
+    onSubmit() {
+        if (this.loginForm.valid) {
+            const {email, password} = this.loginForm.value;
+
+            const loginData = {
+                email: email,
+                password: password
+            }
+            this.authService.login(loginData).subscribe(
+                () => {
+                    this.router.navigate(['/'])
+                },
+                (error) => {
+                    console.error('Login Failed')
+                })
+        }
+        else {
+            this.loginForm.markAsTouched();
+        }
+    }
 }
+

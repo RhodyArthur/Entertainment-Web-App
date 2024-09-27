@@ -20,6 +20,7 @@
     outline: none;
     border: none;
     cursor: pointer;
+
 }
 
 @mixin form-styles {
@@ -38,11 +39,14 @@
     .input-fields {
         @include flex-column(1.5rem);
 
+
         input {
+            caret-color: $red;
             width: 100%;
             border: none;
             outline: none;
             background-color: inherit;
+            color: $white;
             border-bottom: 1px solid $greyish-blue;
             padding: .5rem 0;
         }
@@ -54,6 +58,11 @@
         button {
             @include btn-styles;
             @extend .body-m;
+
+            &:hover {
+                background-color: $white;
+                color: $dark-blue;
+            }
         }
 
         p {

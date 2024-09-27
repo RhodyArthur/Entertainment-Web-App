@@ -7,12 +7,28 @@
     @include flex-column(3.5rem);
     justify-content: center;
     align-items: center;
-    //margin-top: 1.2rem;
+
+    .icon {
+        padding-top: 2rem;
+    }
 
     form {
      @include form-styles;
-    }
 
+        .input-fields {
+
+            .input-group {
+                position: relative;
+                small {
+                    position: absolute;
+                    right: 0;
+                    @include flex-row(flex, center, center);
+                    color: $red;
+                    margin-top: -1.5rem;
+                }
+            }
+        }
+    }
 
 }
 
