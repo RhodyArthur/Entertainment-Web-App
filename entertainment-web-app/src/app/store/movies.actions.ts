@@ -17,3 +17,7 @@ export  const loadMoviesFailure = createAction('[Movies] Load Movies Failure',
 // search movie
 export const setSearchMovie = createAction('[Movie] Set Search Movie',
     props<{searchItem: string}>())
+
+// bookmarked movie
+export const setBookMardkedMovie = createAction('[Movies] Set Bookmarked Movie',
+    props<{movieTitle: string}>())

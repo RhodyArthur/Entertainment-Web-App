@@ -50,7 +50,6 @@
 
 @if (showModal) {
     <div class="modal" (click)="closeModal()">
-
         <div *ngIf="loggedIn$ | async else loginBtn">
             <button type="button" (click)="logOut()">Logout</button>
         </div>
@@ -58,7 +57,5 @@
         <ng-template #loginBtn>
             <button type="button" (click)="logIn()">Login</button>
         </ng-template>
-
-
     </div>
 }

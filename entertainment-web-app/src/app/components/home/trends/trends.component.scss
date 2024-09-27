@@ -96,6 +96,7 @@
                 border-radius: 50%;
                 background-color: #979797;
                 @include flex-row(flex, center, center);
+                z-index: 2;
             }
 
             &:hover {

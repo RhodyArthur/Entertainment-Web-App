@@ -3,12 +3,19 @@ import {Observable} from "rxjs";
 import {Movies} from "../../interface/movies";
 import {AppState} from "../../store/appstate";
 import {Store} from "@ngrx/store";
-import {selectFilteredMovies} from "../../store/movies.selectors";
+import {
+    selectAllMovies,
+    selectBookMarkedMovies,
+    selectFeatureState,
+    selectFilteredMovies
+} from "../../store/movies.selectors";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {SearchComponent} from "../search/search.component";
 import {MenuComponent} from "../menu/menu.component";
 import {TrendsComponent} from "./trends/trends.component";
+import {CardComponent} from "./card/card.component";
+import {setBookMardkedMovie} from "../../store/movies.actions";
 
 @Component({
   selector: 'app-home',
@@ -18,7 +25,8 @@ import {TrendsComponent} from "./trends/trends.component";
         AsyncPipe,
         SearchComponent,
         MenuComponent,
-        TrendsComponent
+        TrendsComponent,
+        CardComponent
     ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -27,6 +35,8 @@ export class HomeComponent implements OnInit{
     movies$!: Observable<Movies[]>;
     category!: string | null;
     trends: Movies[] = [];
+    bookMarkedMoviesList$!: Observable<Movies[]>;
+    bookMarked: boolean = false;
 
     constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
 
@@ -37,9 +47,12 @@ export class HomeComponent implements OnInit{
 
             // clear trends
             this.trends = [];
+            // this.bookMarkedMoviesList = [];
 
             // get trends
             this.getTrends();
+
+            this.getBookMarkedShows();
         })
     }
 
@@ -70,4 +83,8 @@ export class HomeComponent implements OnInit{
         }
     }
 
+    // get bookmarked movies
+    getBookMarkedShows() {
+        this.bookMarkedMoviesList$ = this.store.select(selectBookMarkedMovies);
+    }
 }

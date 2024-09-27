@@ -4,17 +4,18 @@ import {Store} from "@ngrx/store";
 import {setBookMardkedMovie} from "../../../store/movies.actions";
 
 @Component({
-  selector: 'app-trends',
+  selector: 'app-card',
   standalone: true,
   imports: [],
-  templateUrl: './trends.component.html',
-  styleUrl: './trends.component.scss'
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.scss'
 })
-export class TrendsComponent {
+export class CardComponent {
 
-    @Input() trends!: Movies[];
+    @Input() movies!: Movies[];
 
-    constructor(private store: Store) {}
+    constructor(private store: Store) {
+    }
 
     // toggle bookmark
     markAsBookmark(movieTitle:string) {

@@ -16,6 +16,11 @@ export const selectSearchItem = createSelector(
     (state: AppState) => state.searchItem
 )
 
+export const selectBookMarkedMovies = createSelector(
+    selectFeatureState,
+    (state) => state.bookedMarkedMovies
+);
+
 
 // select filtered category
 export const selectFilteredMovies = (category: string | null) => createSelector(
